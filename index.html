@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* 自定义导航栏样式 */
+			#sidebar nav ul {
+				display: flex;
+				flex-direction: column;
+				padding: 0;
+			}
+			
+			#sidebar nav ul li {
+				margin: 0.5em 0;
+			}
+			
+			#sidebar nav ul li a {
+				font-size: 1.3em;
+				font-weight: 600;
+				white-space: nowrap;
+				padding: 0.4em 0;
+				display: block;
+				letter-spacing: 0.05em;
+			}
+			
+			#sidebar .inner {
+				padding: 2.5em 1.8em;
+			}
+
+			/* 设置按钮样式 */
+			.settings-btn {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				z-index: 1000;
+				background: rgba(30, 30, 30, 0.7);
+				color: white;
+				border: none;
+				padding: 8px 15px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				display: flex;
+				align-items: center;
+			}
+
+			.settings-btn svg {
+				margin-right: 5px;
+			}
+
+			/* 设置面板样式 */
+			.settings-panel {
+				position: absolute;
+				top: 60px;
+				right: 15px;
+				z-index: 1000;
+				background: rgba(40, 40, 40, 0.9);
+				border-radius: 8px;
+				padding: 15px;
+				width: 250px;
+				display: none;
+				color: white;
+			}
+
+			.settings-panel h3 {
+				margin-top: 0;
+				color: white;
+				border-bottom: 1px solid rgba(255,255,255,0.2);
+				padding-bottom: 8px;
+			}
+
+			.language-option {
+				display: flex;
+				align-items: center;
+				margin: 10px 0;
+			}
+
+			.language-option label {
+				margin-left: 10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- 设置按钮和面板 -->
+		<button id="settings-btn" class="settings-btn">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+				<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+			</svg>
+			设置
+		</button>
+		<div id="settings-panel" class="settings-panel">
+			<h3>设置</h3>
+			<div class="language-section">
+				<p>语言</p>
+				<div class="language-option">
+					<input type="radio" id="lang-cn" name="language" value="cn" checked>
+					<label for="lang-cn">中文</label>
+				</div>
+				<div class="language-option">
+					<input type="radio" id="lang-en" name="language" value="en">
+					<label for="lang-en">English</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">欢迎</a></li>
+							<li><a href="#one">关于我们</a></li>
+							<li><a href="#two">我们的服务</a></li>
+							<li><a href="#three">联系我们</a></li>
+							<li><a href="game.html">玩游戏</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Hyperspace</h1>
+							<p>一个由<a href="http://html5up.net">HTML5 UP</a>设计的精美响应式网站模板<br />
+							根据<a href="http://html5up.net/license">Creative Commons</a>许可免费发布。</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">了解更多</a></li>
+								<li><a href="game.html" class="button primary">玩Monster Survivors游戏</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Sed ipsum dolor</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Feugiat consequat</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Ultricies aliquam</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2>What we do</h2>
+							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-code"></span>
+									<h3>Lorem ipsum amet</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-lock"></span>
+									<h3>Aliquam sed nullam</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-cog"></span>
+									<h3>Sed erat ullam corper</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-desktop"></span>
+									<h3>Veroeros quis lorem</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-link"></span>
+									<h3>Urna quis bibendum</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-gem"></span>
+									<h3>Aliquam urna dapibus</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+							</div>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>Get in touch</h2>
+							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="name">Name</label>
+												<input type="text" name="name" id="name" />
+											</div>
+											<div class="field half">
+												<label for="email">Email</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<div class="field">
+												<label for="message">Message</label>
+												<textarea name="message" id="message" rows="5"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><a href="" class="button submit">Send Message</a></li>
+										</ul>
+									</form>
+								</section>
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Address</h3>
+											<span>12345 Somewhere Road #654<br />
+											Nashville, TN 00000-0000<br />
+											USA</span>
+										</li>
+										<li>
+											<h3>Email</h3>
+											<a href="#">user@untitled.tld</a>
+										</li>
+										<li>
+											<h3>Phone</h3>
+											<span>(000) 000-0000</span>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				// 语言设置
+				const translations = {
+					cn: {
+						welcome: "欢迎",
+						aboutUs: "关于我们",
+						ourServices: "我们的服务",
+						contactUs: "联系我们",
+						playGame: "玩游戏",
+						mainTitle: "Hyperspace",
+						mainDesc: "一个由HTML5 UP设计的精美响应式网站模板\n根据Creative Commons许可免费发布。",
+						learnMore: "了解更多",
+						playMonsterGame: "玩Monster Survivors游戏",
+						settings: "设置",
+						language: "语言"
+					},
+					en: {
+						welcome: "Welcome",
+						aboutUs: "Who we are",
+						ourServices: "What we do",
+						contactUs: "Get in touch",
+						playGame: "Play Game",
+						mainTitle: "Hyperspace",
+						mainDesc: "Just another fine responsive site template designed by HTML5 UP\nand released for free under the Creative Commons.",
+						learnMore: "Learn more",
+						playMonsterGame: "Play Monster Survivors Game",
+						settings: "Settings",
+						language: "Language"
+					}
+				};
+
+				// 设置面板显示/隐藏
+				document.getElementById('settings-btn').addEventListener('click', function() {
+					const panel = document.getElementById('settings-panel');
+					panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+				});
+
+				// 语言切换
+				const languageOptions = document.querySelectorAll('input[name="language"]');
+				languageOptions.forEach(option => {
+					option.addEventListener('change', function() {
+						changeLanguage(this.value);
+						// 保存语言设置到localStorage
+						localStorage.setItem('preferredLanguage', this.value);
+					});
+				});
+
+				// 初始加载默认语言或保存的语言设置
+				function loadLanguagePreference() {
+					const savedLanguage = localStorage.getItem('preferredLanguage');
+					if (savedLanguage) {
+						document.getElementById(`lang-${savedLanguage}`).checked = true;
+						changeLanguage(savedLanguage);
+					} else {
+						changeLanguage('cn');
+					}
+				}
+
+				// 语言切换函数
+				function changeLanguage(lang) {
+					const t = translations[lang];
+					
+					// 更新导航
+					const navItems = document.querySelectorAll('#sidebar nav ul li a');
+					navItems[0].textContent = t.welcome;
+					navItems[1].textContent = t.aboutUs;
+					navItems[2].textContent = t.ourServices;
+					navItems[3].textContent = t.contactUs;
+					navItems[4].textContent = t.playGame;
+					
+					// 更新主页内容
+					document.querySelector('#intro h1').textContent = t.mainTitle;
+					const mainDesc = document.querySelector('#intro p');
+					mainDesc.innerHTML = t.mainDesc.replace('\n', '<br />');
+					
+					// 更新按钮
+					const buttons = document.querySelectorAll('#intro .actions li a');
+					buttons[0].textContent = t.learnMore;
+					buttons[1].textContent = t.playMonsterGame;
+					
+					// 设置按钮和面板
+					document.getElementById('settings-btn').innerHTML = `
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+							<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+						</svg>
+						${t.settings}
+					`;
+					document.querySelector('#settings-panel h3').textContent = t.settings;
+					document.querySelector('.language-section p').textContent = t.language;
+				}
+
+				// 加载语言设置
+				loadLanguagePreference();
+			</script>
+
+	</body>
+</html>

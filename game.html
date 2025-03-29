@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Monster Survivors - Epic Survival Adventure Game Online</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Play Monster Survivors online - An intense survival game where you battle endless waves of monsters while collecting power-ups and evolving your character.">
+		<link rel="canonical" href="https://522001.xyz" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* 自定义导航栏样式 */
+			#sidebar nav ul {
+				display: flex;
+				flex-direction: column;
+				padding: 0;
+			}
+			
+			#sidebar nav ul li {
+				margin: 0.5em 0;
+			}
+			
+			#sidebar nav ul li a {
+				font-size: 1.3em;
+				font-weight: 600;
+				white-space: nowrap;
+				padding: 0.4em 0;
+				display: block;
+				letter-spacing: 0.05em;
+			}
+			
+			#sidebar .inner {
+				padding: 2.5em 1.8em;
+			}
+
+			/* 设置按钮样式 */
+			.settings-btn {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				z-index: 1000;
+				background: rgba(30, 30, 30, 0.7);
+				color: white;
+				border: none;
+				padding: 8px 15px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				display: flex;
+				align-items: center;
+			}
+
+			.settings-btn svg {
+				margin-right: 5px;
+			}
+
+			/* 设置面板样式 */
+			.settings-panel {
+				position: absolute;
+				top: 60px;
+				right: 15px;
+				z-index: 1000;
+				background: rgba(40, 40, 40, 0.9);
+				border-radius: 8px;
+				padding: 15px;
+				width: 250px;
+				display: none;
+				color: white;
+			}
+
+			.settings-panel h3 {
+				margin-top: 0;
+				color: white;
+				border-bottom: 1px solid rgba(255,255,255,0.2);
+				padding-bottom: 8px;
+			}
+
+			.language-option {
+				display: flex;
+				align-items: center;
+				margin: 10px 0;
+			}
+
+			.language-option label {
+				margin-left: 10px;
+				cursor: pointer;
+			}
+
+			/* 游戏容器样式 */
+			.game-wrapper {
+				position: relative;
+				width: 100%;
+				height: 600px;
+				background-color: black;
+				margin: 20px 0;
+			}
+
+			#game-overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.7);
+				z-index: 9999;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.ad-container {
+				background: rgba(70, 70, 100, 0.9);
+				padding: 30px;
+				border-radius: 15px;
+				max-width: 500px;
+				text-align: center;
+				color: white;
+			}
+
+			.continue-btn {
+				background: #333;
+				color: white;
+				border: none;
+				padding: 12px 25px;
+				margin-top: 20px;
+				border-radius: 25px;
+				cursor: pointer;
+				font-size: 18px;
+				transition: all 0.3s;
+			}
+
+			.continue-btn:hover {
+				background: #444;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- 设置按钮和面板 -->
+		<button id="settings-btn" class="settings-btn">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+				<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+			</svg>
+			设置
+		</button>
+		<div id="settings-panel" class="settings-panel">
+			<h3>设置</h3>
+			<div class="language-section">
+				<p>语言</p>
+				<div class="language-option">
+					<input type="radio" id="lang-cn" name="language" value="cn" checked>
+					<label for="lang-cn">中文</label>
+				</div>
+				<div class="language-option">
+					<input type="radio" id="lang-en" name="language" value="en">
+					<label for="lang-en">English</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- 广告覆盖层 -->
+		<div id="game-overlay">
+			<div class="ad-container">
+				<h2 id="ad-title">Monster Survivors</h2>
+				<p id="ad-text">感谢游玩！稍等一下，游戏将继续。</p>
+				<button id="continue-btn" class="continue-btn">继续游戏</button>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">游戏</a></li>
+							<li><a href="#overview">游戏概述</a></li>
+							<li><a href="#features">主要特点</a></li>
+							<li><a href="#howtoplay">游戏方法</a></li>
+							<li><a href="index.html">返回首页</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Monster Survivors</h1>
+							<p>在这款刺激的动作冒险游戏中，挑战无尽的怪物浪潮！</p>
+							<div class="game-wrapper">
+								<iframe 
+									id="game-frame"
+									src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html"
+									style="width:100%; height:100%; border:0;"
+									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen>
+								</iframe>
+							</div>
+							<ul class="actions">
+								<li><a href="#overview" class="button scrolly">了解更多</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Game Overview -->
+					<section id="overview" class="wrapper style2 spotlights">
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>游戏概述</h2>
+									<p>Monster Survivors 是一款激烈的生存游戏，挑战玩家在面对越来越困难的怪物浪潮时尽可能长时间地存活。升级、收集道具、解锁新能力，变得更强大并存活更久。</p>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				<!-- Features -->
+					<section id="features" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2>主要特点</h2>
+							<div class="features">
+								<section>
+									<span class="icon solid major fa-gamepad"></span>
+									<h3>无尽的生存游戏</h3>
+									<p>拥有渐进式难度的无尽生存玩法</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-bolt"></span>
+									<h3>多种角色能力</h3>
+									<p>多种角色能力和强化道具</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-fist-raised"></span>
+									<h3>动态战斗系统</h3>
+									<p>流畅且刺激的动态战斗系统</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-palette"></span>
+									<h3>精美图形</h3>
+									<p>精美的图形和流畅的动画效果</p>
+								</section>
+								<section>
+									<span class="icon solid major fa-desktop"></span>
+									<h3>跨平台兼容</h3>
+									<p>支持多种平台，随时随地畅玩</p>
+								</section>
+							</div>
+						</div>
+					</section>
+
+				<!-- How to Play -->
+					<section id="howtoplay" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>游戏方法</h2>
+							<p>使用WASD或方向键移动角色。自动攻击附近的敌人，收集经验球来升级。随着游戏进程选择新能力和升级。在面对越来越具有挑战性的怪物浪潮时尽可能长时间地生存。</p>
+							<ul class="actions">
+								<li><a href="#intro" class="button scrolly">开始游戏</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; 2025 Monster Survivors. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				// 语言设置
+				const translations = {
+					cn: {
+						gameTitle: "Monster Survivors",
+						gameDesc: "在这款刺激的动作冒险游戏中，挑战无尽的怪物浪潮！",
+						navGame: "游戏",
+						navOverview: "游戏概述",
+						navFeatures: "主要特点",
+						navHowToPlay: "游戏方法",
+						navReturn: "返回首页",
+						overviewTitle: "游戏概述",
+						overviewText: "Monster Survivors 是一款激烈的生存游戏，挑战玩家在面对越来越困难的怪物浪潮时尽可能长时间地存活。升级、收集道具、解锁新能力，变得更强大并存活更久。",
+						featuresTitle: "主要特点",
+						feature1: "无尽的生存游戏",
+						feature1Desc: "拥有渐进式难度的无尽生存玩法",
+						feature2: "多种角色能力",
+						feature2Desc: "多种角色能力和强化道具",
+						feature3: "动态战斗系统",
+						feature3Desc: "流畅且刺激的动态战斗系统",
+						feature4: "精美图形",
+						feature4Desc: "精美的图形和流畅的动画效果",
+						feature5: "跨平台兼容",
+						feature5Desc: "支持多种平台，随时随地畅玩",
+						howToPlayTitle: "游戏方法",
+						howToPlayText: "使用WASD或方向键移动角色。自动攻击附近的敌人，收集经验球来升级。随着游戏进程选择新能力和升级。在面对越来越具有挑战性的怪物浪潮时尽可能长时间地生存。",
+						startGame: "开始游戏",
+						learnMore: "了解更多",
+						settings: "设置",
+						language: "语言",
+						adTitle: "Monster Survivors",
+						adText: "感谢游玩！稍等一下，游戏将继续。",
+						continueGame: "继续游戏"
+					},
+					en: {
+						gameTitle: "Monster Survivors",
+						gameDesc: "Challenge endless waves of monsters in this exciting action adventure game!",
+						navGame: "Game",
+						navOverview: "Overview",
+						navFeatures: "Features",
+						navHowToPlay: "How to Play",
+						navReturn: "Return Home",
+						overviewTitle: "Game Overview",
+						overviewText: "Monster Survivors is an intense survival game that challenges players to stay alive as long as possible while facing increasingly difficult waves of monsters. Level up, collect power-ups, and unlock new abilities to become stronger and survive longer.",
+						featuresTitle: "Key Features",
+						feature1: "Endless Survival Gameplay",
+						feature1Desc: "Progressive difficulty with endless gameplay",
+						feature2: "Multiple Character Abilities",
+						feature2Desc: "Various character abilities and power-ups",
+						feature3: "Dynamic Combat System",
+						feature3Desc: "Smooth and exciting dynamic combat system",
+						feature4: "Beautiful Graphics",
+						feature4Desc: "Beautiful graphics and smooth animations",
+						feature5: "Cross-platform Compatibility",
+						feature5Desc: "Play anywhere, anytime on multiple platforms",
+						howToPlayTitle: "How to Play",
+						howToPlayText: "Use WASD or arrow keys to move your character. Automatically attack nearby enemies and collect experience orbs to level up. Choose new abilities and upgrades as you progress. Survive as long as possible against increasingly challenging waves of monsters.",
+						startGame: "Start Game",
+						learnMore: "Learn More",
+						settings: "Settings",
+						language: "Language",
+						adTitle: "Monster Survivors",
+						adText: "Thanks for playing! Please wait a moment, the game will continue.",
+						continueGame: "Continue Game"
+					}
+				};
+
+				// 设置面板显示/隐藏
+				document.getElementById('settings-btn').addEventListener('click', function() {
+					const panel = document.getElementById('settings-panel');
+					panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+				});
+
+				// 语言切换
+				const languageOptions = document.querySelectorAll('input[name="language"]');
+				languageOptions.forEach(option => {
+					option.addEventListener('change', function() {
+						changeLanguage(this.value);
+						// 保存语言设置到localStorage
+						localStorage.setItem('preferredLanguage', this.value);
+					});
+				});
+
+				// 初始加载默认语言或保存的语言设置
+				function loadLanguagePreference() {
+					const savedLanguage = localStorage.getItem('preferredLanguage');
+					if (savedLanguage) {
+						document.getElementById(`lang-${savedLanguage}`).checked = true;
+						changeLanguage(savedLanguage);
+					} else {
+						changeLanguage('cn');
+					}
+				}
+
+				// 初始加载默认语言
+				function changeLanguage(lang) {
+					const t = translations[lang];
+					
+					// 更新页面文本
+					document.querySelector('#intro h1').textContent = t.gameTitle;
+					document.querySelector('#intro p').textContent = t.gameDesc;
+					
+					// 导航
+					const navItems = document.querySelectorAll('#sidebar nav ul li a');
+					navItems[0].textContent = t.navGame;
+					navItems[1].textContent = t.navOverview;
+					navItems[2].textContent = t.navFeatures;
+					navItems[3].textContent = t.navHowToPlay;
+					navItems[4].textContent = t.navReturn;
+					
+					// 按钮和标题
+					document.querySelector('#intro .actions li:first-child a').textContent = t.learnMore;
+					document.querySelector('#overview h2').textContent = t.overviewTitle;
+					document.querySelector('#overview p').textContent = t.overviewText;
+					
+					// 特点部分
+					document.querySelector('#features h2').textContent = t.featuresTitle;
+					const features = document.querySelectorAll('#features .features section');
+					features[0].querySelector('h3').textContent = t.feature1;
+					features[0].querySelector('p').textContent = t.feature1Desc;
+					features[1].querySelector('h3').textContent = t.feature2;
+					features[1].querySelector('p').textContent = t.feature2Desc;
+					features[2].querySelector('h3').textContent = t.feature3;
+					features[2].querySelector('p').textContent = t.feature3Desc;
+					features[3].querySelector('h3').textContent = t.feature4;
+					features[3].querySelector('p').textContent = t.feature4Desc;
+					features[4].querySelector('h3').textContent = t.feature5;
+					features[4].querySelector('p').textContent = t.feature5Desc;
+					
+					// 游戏方法
+					document.querySelector('#howtoplay h2').textContent = t.howToPlayTitle;
+					document.querySelector('#howtoplay p').textContent = t.howToPlayText;
+					document.querySelector('#howtoplay .button').textContent = t.startGame;
+					
+					// 设置按钮文本
+					document.getElementById('settings-btn').innerHTML = `
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+							<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+						</svg>
+						${t.settings}
+					`;
+					
+					// 设置面板
+					document.querySelector('#settings-panel h3').textContent = t.settings;
+					document.querySelector('.language-section p').textContent = t.language;
+					
+					// 广告覆盖层
+					document.getElementById('ad-title').textContent = t.adTitle;
+					document.getElementById('ad-text').textContent = t.adText;
+					document.getElementById('continue-btn').textContent = t.continueGame;
+				}
+
+				// 监听iframe消息以拦截广告
+				const originalFrame = document.getElementById('game-frame');
+				
+				// 继续游戏按钮
+				document.getElementById('continue-btn').addEventListener('click', function() {
+					document.getElementById('game-overlay').style.display = 'none';
+				});
+
+				// 启动默认语言
+				loadLanguagePreference();
+
+				// 模拟替代广告的功能
+				function interceptAds() {
+					// 随机时间后显示自定义广告（30-120秒）
+					setTimeout(() => {
+						document.getElementById('game-overlay').style.display = 'flex';
+						
+						// 5秒后自动关闭广告
+						setTimeout(() => {
+							document.getElementById('game-overlay').style.display = 'none';
+							// 循环继续拦截
+							interceptAds();
+						}, 5000);
+					}, Math.random() * 90000 + 30000);  // 随机30-120秒
+				}
+
+				// 开始拦截广告
+				interceptAds();
+			</script>
+	</body>
+</html> 
